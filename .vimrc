@@ -16,6 +16,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'slim-templates/vim-slim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'skalnik/vim-vroom'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'heartsentwined/vim-emblem'
+Plugin 'tpope/vim-repeat'
 call vundle#end()
 filetype plugin on
 
@@ -51,6 +55,7 @@ set hlsearch
 
 " Maps leader (\) to space
 let mapleader = "\<Space>"
+" map <leader> <Space>
 
 
 " Maps : to ;, removing the shift step
@@ -124,3 +129,17 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" emblem syntax hightlighting
+ autocmd BufNewFile,BufRead *.embl set filetype=emblem
+
+" make window split smaller
+set winminwidth=10
+set winwidth=110
+
+" copy current path using leader CR
+:nmap <silent> <leader>cp :let @+ = expand("%")<CR>
+
+" lets you copy to clipboard
+set clipboard=unnamed
+
