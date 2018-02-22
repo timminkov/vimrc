@@ -6,20 +6,24 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'slim-templates/vim-slim'
+Plugin 'slim-template/vim-slim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'skalnik/vim-vroom'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'heartsentwined/vim-emblem'
 Plugin 'tpope/vim-repeat'
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+Plugin 'fatih/vim-go'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin on
 
@@ -39,7 +43,7 @@ set display+=lastline
 set lazyredraw
 
 " Auto indentation
-set smartindent
+set autoindent
 
 " Relative line numbers
 set rnu
@@ -67,20 +71,14 @@ set pastetoggle=<F2>
 " Maps control-n to opening/closing NerdTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Maps control-p to searching with ctrl-p
-let g:ctrlp_map = '<c-p>'
+" Maps control-p to searching with fzf
+nnoremap <C-p> :Files<CR>
 
 " Maps control-] to moving to next buffer
 nnoremap <C-]> :bn<cr>
 
 " Maps jj to leaving insert mode (press twice quickly)
 imap jj <ESC>
-
-" Outdated stuff for miniBufExpl plugin
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 
 " Vim-RSpec hotkeys, plugin for running specs in Vim
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -143,3 +141,10 @@ set winwidth=110
 " lets you copy to clipboard
 set clipboard=unnamed
 
+" Unset cap of 10,000 files so we find everything for ctrlp
+let g:ctrlp_max_files = 0
+
+" Make ctrl-p use ag
+let g:ctrlp_user_command = 'ag %s -f -l --nocolor -g ""'
+set rtp+=/usr/local/opt/fzf
+set regexpengine=1
