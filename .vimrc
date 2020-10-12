@@ -24,6 +24,9 @@ Plugin 'rking/ag.vim'
 Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'junegunn/fzf.vim'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'pangloss/vim-javascript'
+Plugin 'prettier/vim-prettier'
 call vundle#end()
 filetype plugin on
 
